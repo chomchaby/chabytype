@@ -1,0 +1,180 @@
+/* ========= common style ======== */
+:root {
+    --bg-color: #323437;
+    --main-color: #e2b714;
+    --caret-color: #e2b714;
+    --sub-color: #646669;
+    --sub-alt-color: #2c2e31;
+    --text-color: #d1d0c5;
+    --error-color: #ca4754;
+    --error-extra-color: #7e2a33;
+    --colorful-error-color: #ca4754;
+    --colorful-error-extra-color: #7e2a33;
+    
+    --font:"Roboto Mono", "Vazirmatn", monospace;
+    --roundness: .5rem;
+}
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: var(--font);
+    color: var(--text-color);
+    background: var(--bg-color);
+}
+.hidden {
+    display: none !important;
+}
+
+/* ========= grid layout ======== */
+.content-grid {
+    --padding-inline: 2rem;
+    --content-max-width: 1536px;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: [full-width-start] minmax(0, var(--padding-inline)) [full-width-padding-start] minmax(0, 1fr) [content-start] min(100% - var(--padding-inline)* 2, var(--content-max-width)) [content-end] minmax(0, 1fr) [full-width-padding-end] minmax(0, var(--padding-inline)) [full-width-end];
+}
+.content-grid>:not(.breakout,.full-width,.full-width-padding) {
+    grid-column: content-start/content-end;
+}
+.content-grid>.full-width {
+    grid-column: full-width-start/full-width-end;
+}
+
+/* ========= form element style ========= */
+button, input, select, textarea {
+    font-family: inherit;
+    font-size: 100%;
+    line-height: 1.15;
+    margin: 0;
+}
+input, textarea {
+    border: none;
+    outline: none;
+    padding: 0.5em;
+    background: var(--sub-alt-color);
+    color: var(--text-color);
+    caret-color: var(--main-color);
+    line-height: 1.25em;
+}
+
+/* ========= font awesome <i> style ======== */
+button .fas, button .far, button .fab, 
+.button .fas, .button .far, .button .fab, 
+.textButton .fas, .textButton .far, .textButton .fab {
+    line-height: 1.25;
+}
+
+/* ========= button style ======== */
+button, .button, 
+input[type=button], input[type=reset], input[type=submit] {
+    color: var(--text-color);
+    cursor: pointer;
+    padding: 0.5em;
+    border-radius: var(--roundness);
+    background: var(--sub-alt-color);
+    text-align: center;
+    height: min-content;
+    line-height: 1.25;
+    border: none;
+    font-family: inherit;
+    font-size: 1em;
+    display: inline-flex;
+    gap: 0.5em;
+    align-items: baseline;
+    justify-content: center;
+}
+button.active, .button.active, 
+input[type=button].active, 
+input[type=reset].active, 
+input[type=submit].active {
+    background:var(--main-color);
+    color: var(--bg-color);
+} 
+button:hover, .button:hover, 
+input[type=button]:hover, 
+input[type=reset]:hover, 
+input[type=submit]:hover {
+    background:var(--text-color);
+    color: var(--bg-color);
+} 
+
+/* ========= textButton style ======== */
+/* <button> and <a> */
+a.textButton {
+    text-decoration: none;
+}
+button.text, .button.text, .textButton {
+    color: var(--sub-color);
+    cursor: pointer;
+    padding: 0.5em;
+    border-radius: var(--roundness);
+    background: 0 0;
+    text-align: center;
+    height: min-content;
+    line-height: 1.25;
+    border: none;
+    font-family: inherit; /* form elements don't inherit font settings */
+    font-size: 1em;
+    display: inline-flex;
+    gap: .5em;
+    align-items: baseline;
+    justify-content: center;
+}
+button.text.active, .button.text.active, .textButton.active {
+    color: var(--main-color);
+    background: 0 0;
+}
+button.text:hover, .button.text:hover, .textButton:hover {
+    color: var(--text-color);
+    background: 0 0;
+}
+
+
+
+
+/* ================================= */
+/* ========== media query ========= */
+/* ================================= */
+@media only screen and (max-width: calc(1536px + 5rem)) {
+    .content-grid {
+        --content-max-width: 1280px;
+    }
+}
+@media only screen and (max-width: calc(1280px + 5rem)) {
+    .content-grid {
+        --content-max-width: 1024px;
+    }
+}
+@media only screen and (max-width: calc(1024px + 5rem)) {
+    .content-grid {
+        --content-max-width: 768px;
+    }
+}
+@media only screen and (max-width:calc(768px + 5rem)) {
+    .content-grid {
+        --content-max-width: 640px;
+    }
+}
+
+@media only screen and (max-width:calc(640px + 5rem)) {
+    .content-grid {
+        --content-max-width: 100%;
+        --padding-inline: 1rem;
+    }
+}
+
+/* ================================= */
+/* ============ keyframes ========== */
+/* ================================= */
+
+@keyframes caretFlashSmooth {
+    0%, 100% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+}

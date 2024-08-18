@@ -1,0 +1,338 @@
+/* ========== app styling ========= */
+#app {
+    min-height: 100vh;
+    width: 100%;
+    padding: 2rem 0;
+    grid-template-rows: [top-start] auto [content-start] 1fr [content-end] auto [top-end];
+    row-gap: 2rem;
+}
+
+/* ========= header styling ======== */
+header {
+    line-height: 2.3rem;
+    font-size: 2.3rem;
+    display: grid;
+    grid-template-areas: "logo menu";
+    grid-template-columns: auto 1fr;
+    gap: 0.5rem;
+    align-items: center;
+    z-index: 2;
+}
+
+/* ========= part 1: header logo ======== */
+header #logo {
+    cursor: pointer;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.5rem;
+    color: var(--text-color);
+    padding: .35rem .25rem;
+}
+header #logo .icon {
+    width: 2.5rem;
+    display: grid;
+    align-items: center;
+    background-color: transparent;
+}
+header #logo .icon svg {
+    fill: var(--main-color);
+}
+header #logo .text {
+    position: relative;
+    font-size: 2rem;
+    line-height: 2rem;
+    font-family: Lexend Deca, sans-serif;
+    font-weight: unset;
+    margin-top: -0.23em;
+}
+header #logo .text .top {
+    position: absolute;
+    left: .35em;
+    top: -0.25em;
+    font-size: .325em;
+    line-height: .325em;
+    color: var(--sub-color);
+}
+
+/* ========= part 2: header nav ======== */
+header nav {
+    font-size: 1rem; 
+    line-height: 1rem; 
+    color: var(--sub-color);
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: auto auto auto auto 1fr auto;
+    gap: 0.5rem;
+    width: 100%;
+}
+/* icon div in nav */
+/* user contain <i> the same as icon div */
+nav .textButton .icon, nav .textButton .user{
+    width: 1.25em;
+    height: 1.25em;
+    display: grid;
+    place-content: center center;
+}
+/* text div in nav */
+nav .textButton .text {
+    font-size: .75em;
+    align-self: center;
+}
+/* account button (<a>) */
+/* note: override older display (from inline-flex to grid) */
+nav .textButton.account {
+    position: relative;
+    align-items: center;
+    gap: .33em;
+    display: grid;
+    grid-auto-flow: column;
+}
+nav .textButton.account .level {
+    font-size: .65em;
+    color: var(--bg-color);
+    background: var(--sub-color);
+    padding: .4em;
+    border-radius: calc(var(--roundness) / 2);
+    width: max-content;
+    line-height: .65em;
+}
+nav .textButton.account:hover .level {
+    color: var(--bg-color);
+    background: var(--text-color); 
+}
+
+
+/* =========== main styling ========== */
+main {
+    height: 100%;
+}
+/* ========= pageTest styling ======== */
+.pageTest {
+    height: 100%;
+    display: grid;
+    grid-template-rows: 1fr auto 1fr;;
+}
+/* ========= part 1.1: testConfig ======== */
+#testConfig {
+    --horizontalPadding: 1em;
+    --verticalPadding: 1em;
+    font-size: 0.75rem;
+    display: grid;
+    gap: 0.5em;
+    grid-auto-flow: column;
+    justify-content: space-around;
+    height: max-content;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+#testConfig .row {
+    display: flex;
+    background: var(--sub-alt-color);
+    border-radius: var(--roundness);
+}
+#testConfig .puncAndNum, 
+#testConfig .mode, 
+#testConfig .time, 
+#testConfig .wordCount, 
+#testConfig .quoteLength, 
+#testConfig .zen, 
+#testConfig .customText{
+    display: grid;
+    grid-auto-flow: column;
+}
+
+#testConfig .puncAndNum .textButton, 
+#testConfig .mode .textButton, 
+#testConfig .time .textButton, 
+#testConfig .wordCount .textButton, 
+#testConfig .quoteLength .textButton, 
+#testConfig .zen .textButton, 
+#testConfig .customText .textButton { 
+    padding: var(--verticalPadding) var(--horizontalPadding);
+}
+#testConfig .puncAndNum .textButton:first-child, 
+#testConfig .mode .textButton:first-child, 
+#testConfig .time .textButton:first-child, 
+#testConfig .wordCount .textButton:first-child, 
+#testConfig .quoteLength .textButton:first-child, 
+#testConfig .zen .textButton:first-child, 
+#testConfig .customText .textButton:first-child { 
+    margin-left: var(--horizontalPadding);
+}
+#testConfig .puncAndNum .textButton:last-child, 
+#testConfig .mode .textButton:last-child, 
+#testConfig .time .textButton:last-child, 
+#testConfig .wordCount .textButton:last-child, 
+#testConfig .quoteLength .textButton:last-child, 
+#testConfig .zen .textButton:last-child, 
+#testConfig .customText .textButton:last-child { 
+    margin-right: var(--horizontalPadding);
+}
+#testConfig .spacer {
+    width: 0.5em;
+    background: var(--bg-color);
+    border-radius: calc(var(--roundness)/2);
+    margin: 0.75em 0;
+}
+/* ===== part 1.2: mobileTestConfigButton ===== */
+#mobileTestConfigButton {
+    display: none;
+    justify-self: center;
+    margin-bottom: 1rem;
+    height: max-content;
+}
+#mobileTestConfigButton button{
+    font-size: 0.75em;
+    padding: 1em 2em;
+    color: var(--sub-color);
+}
+/* ========= part 2: typingTest ======== */
+.pageTest #typingTest {
+    font-size: 1.5rem;
+    max-width: 100%;
+    width: 100%;
+    position: relative;
+    margin: 0 auto;
+}
+/* ========= part 2.1: capsWarning ======== */
+/* ========= part 2.2: testModesNotice ======== */
+.pageTest #testModesNotice {
+    font-size: 1rem;
+    color: var(--sub-color);
+    text-align: center;
+    margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.pageTest #testModesNotice .textButton {
+    padding: 0.5em 1em;
+}
+/* ========= part 2.3: wordsWrapper ======== */
+.pageTest #wordsWrapper {
+    position: relative;
+}
+.pageTest #wordsInput {
+    position: absolute;
+    font-size: 1rem;
+    display: block;
+    padding: 0;
+    border: none;
+    outline: none;  
+    z-index: -1;
+    opacity: 0;
+}
+.pageTest .outOfFocusWarning {
+    margin-top: 49px;
+    position: absolute;
+    font-size: 1rem;
+    text-align: center;
+    width: 100%;
+    height: 0;
+    z-index: 999;
+    cursor: default;
+}
+.pageTest #caret {
+    position: absolute;
+    top: 0.25em;
+    left: 0.3em;
+    height: 1.2em;
+    width: .1em;
+    background: var(--caret-color);
+    border-radius: var(--roundness);
+    animation: caretFlashSmooth 1s infinite;
+    transition: 0.125s;
+}
+.pageTest #words {
+    height: 152px;
+    width: 100%;
+    padding-bottom: 1em;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+    transition: 0.25s;
+    --correct-letter-color: var(--text-color);
+    --correct-letter-animation: none;
+    --untyped-letter-color: var(--sub-color);
+    --untyped-letter-animation: none;
+    --incorrect-letter-color: var(--error-color);
+    --incorrect-letter-animation: none;
+    --extra-letter-color: var(--error-extra-color);
+    --extra-letter-animation: none;
+}
+.pageTest #words.blurred {
+    opacity: .25;
+    filter: blur(4px);
+}
+
+#words .word {
+    position: relative;
+    font-size: 1em;
+    line-height: 1em;
+    margin: 0.25em 0.3em;
+    border-bottom: 2px solid transparent;
+}
+#words .word.error {
+    border-bottom: 2px solid var(--error-color);
+}
+#words .word .letter {
+    color: var(--untyped-letter-color);
+    animation: var(--untyped-letter-animation);
+}
+#words .word .letter.correct {
+    color: var(--correct-letter-color);
+    animation: var(--correct-letter-animation);
+}
+#words .word .letter.incorrect {
+    color: var(--incorrect-letter-color);
+    animation: var(--incorrect-letter-animation);
+}
+
+
+/* ========= part 3: result ============ */
+
+
+
+/* ================================= */
+/* ========= responsiveness ======== */
+/* ================================= */
+@media only screen and (max-width: calc(1536px + 5rem)) {
+
+}
+@media only screen and (max-width: calc(1280px + 5rem)) {
+
+}
+@media only screen and (max-width: calc(1024px + 5rem)) {
+    header #logo .text {
+        font-size: 1.5rem;
+    }
+    header #logo .text .top {
+        display: none;
+    }
+    header nav .textButton.account .text {
+        display: none;
+    }
+    #testConfig {
+        font-size: 0.7rem;
+        --horizontalPadding: 0.6em;
+    }
+}
+@media only screen and (max-width:calc(768px + 5rem)) {
+    #testConfig {
+        font-size: 0.65rem;
+        --horizontalPadding: 0.55em;
+    }
+}
+
+@media only screen and (max-width: calc(640px + 5rem)) {
+    header #logo .text {
+        display: none;
+    }
+    .pageTest #testConfig {
+        display: none;
+    }
+    .pageTest #mobileTestConfigButton {
+        display: block;
+    }
+}
+
